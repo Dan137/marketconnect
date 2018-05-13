@@ -8,6 +8,7 @@ package Model.Teste;
 import Model.entidade.Cliente;
 import Model.entidade.Endereco;
 import controller.Controler;
+import controller.ControlerCliente;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,16 +21,15 @@ public class TesteCliente {
     public static void main(String[] args) {
         
         Date dataHoje = new Date();
-        
-        Controler controler = new Controler();
+        ControlerCliente cl = new ControlerCliente();
         SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
         String dataAbertura = formataData.format(dataHoje);
 
 //        cadastra um novo endereco (passe um numero diferente no parâmetro do método
-        TesteCliente.cadastraEndereco(5, controler);
+//        TesteCliente.cadastraEndereco(5, cl);
 //        ----------------- CADASTRA CLIENTE!! ---------------------------
-        Cliente cliente1 = new Cliente(0, "Daniel ", dataHoje, "703.968.604-00", "daniel.verissimo@gmail.com", "(87) 9.8135-5794", controler.getEndereco(4));
-        controler.inserirCliente(cliente1);
+        Cliente cliente1 = new Cliente(0, "Daniel ", dataHoje, "703.968.604-00", "daniel.verissimo@gmail.com", "(87) 9.8135-5794", null);
+        cl.inserirCliente(cliente1);
 //        Cliente cliente2 = new Cliente(0, "Maycon", dataHoje, "xxx.xxx.xxx-xx", "blkd", "dkfjkdf", "maycon@gmail.com", "(87) 9.8132-5721");       
 //        controler.inserirCliente(cliente2);
 
@@ -60,9 +60,9 @@ public class TesteCliente {
 //        controler.deleteCliente(cliente);
     }
     
-    public static void cadastraEndereco(int numero, Controler controler) {
+    public static void cadastraEndereco(int numero, ControlerCliente cl) {
         Endereco enderecoCliente = new Endereco("Rua C", numero, "centro", "Paranatama-PE", "55-355-00");
        
-        controler.cadEndereco(enderecoCliente);
+        cl.cadEndereco(enderecoCliente);
     }
 }

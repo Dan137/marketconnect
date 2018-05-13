@@ -6,7 +6,7 @@
 package controller;
 
 import Model.DAO.VendaDao;
-import Model.entidade.Vendas;
+import Model.entidade.Venda;
 
 /**
  *
@@ -14,7 +14,7 @@ import Model.entidade.Vendas;
  */
 public class ControlerVenda {
     
-    public void cadastrarVenda(Vendas v){
+    public void cadastrarVenda(Venda v){
         VendaDao.getInstance().inserir(v);
     }
 }

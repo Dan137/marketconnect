@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,7 +24,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cliente")
 @Inheritance( strategy = InheritanceType.JOINED )
-public class Cliente implements Serializable {
+public class Cliente implements Serializable{
 
     @GeneratedValue()
     @Id
@@ -35,7 +36,7 @@ public class Cliente implements Serializable {
 
     private Date dataAbertura;
 
-    @Column(length = 15)
+    @Column(length = 20)
     private String cpf;
 
     @Column(length = 60)
@@ -47,6 +48,9 @@ public class Cliente implements Serializable {
     @OneToOne()
     private Endereco endereco;
 
+    @OneToOne(mappedBy = "cliente_id")
+    private Venda venda;
+    
     public Cliente(Integer codigo, String nome, Date dataAbertura, String cpf, String email, String telefone, Endereco endereco) {
 
         this.codigo = codigo;

@@ -6,7 +6,7 @@
 package controller;
 
 import Model.DAO.ItensVendasDao;
-import Model.entidade.ItensVendas;
+import Model.entidade.ItemVenda;
 
 
 
@@ -16,10 +16,10 @@ import Model.entidade.ItensVendas;
  */
 public class ControlerItemVenda {
     
-    public void cadastrarItemVenda(ItensVendas v){
+    public void cadastrarItemVenda(ItemVenda v){
         ItensVendasDao.getInstance().inserir(v);
     }
-    public ItensVendas findIDitemVenda(int codigo){
-        return (ItensVendas) ItensVendasDao.getInstance().recuperar(codigo);
+    public ItemVenda findIDitemVenda(int codigo){
+        return (ItemVenda) ItensVendasDao.getInstance().recuperar(codigo);
     }
 }

@@ -14,64 +14,45 @@ import Model.entidade.Endereco;
 import Model.entidade.Funcionario;
 import java.util.List;
 import Model.entidade.Produto;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Maycon
  */
+@ManagedBean
+@SessionScoped
 public class Controler {
+    private Cliente cliente;
+    private Endereco endereco;
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
     public Controler() {
-
+        this.cliente = new Cliente();
+        this.endereco = new Endereco();
     }
     // ==============================CONTROLER DE PRODUTO=============================
 
-    public void inserir(Produto produto) {
-        ProdutoDAO.getInstance().inserir(produto);
-
-    }
-
-    public void alterar(Produto produto) {
-        ProdutoDAO.getInstance().alterar(produto);
-    }
-
-    public void excluir(Produto produto) {
-        ProdutoDAO.getInstance().deletar(produto);
-    }
-
-    public Produto findId(int codigo) {
-        return (Produto) ProdutoDAO.getInstance().recuperar(codigo);
-    }
-
-    public List<Produto> listarProdutos() {
-        return ProdutoDAO.getInstance().recuperarTodos();
-    }
 
     // ==============================CONTROLER DE CLIENTE=============================
-    public void inserirCliente(Cliente cliente) {
-        ClienteDao.getInstance().inserir(cliente);
-
-    }
-
-    public void updateCliente(Cliente cliente) {
-        ClienteDao.getInstance().alterar(cliente);
-
-    }
-
-    public Cliente findIDCliente(int codigo) {
-        return (Cliente) ClienteDao.getInstance().recuperar(codigo);
-
-    }
-
-    public void deleteCliente(Cliente cliente) {
-        ClienteDao.getInstance().deletar(cliente);
-
-    }
-
-    public List<Cliente> findAllClientes() {
-        return ClienteDao.getInstance().recuperarTodos();
-
-    }
+   
 
     // ==============================CONTROLER DE FUNCIOANARIOS=============================
     public void cadFuncionario(Funcionario funcionario) {

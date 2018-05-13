@@ -8,6 +8,7 @@ package Model.Teste;
 import controller.Controler;
 
 import Model.entidade.Produto;
+import controller.ControlerProduto;
 
 /**
  *
@@ -18,14 +19,12 @@ public class TesteProduto {
     public static void main(String[] args) {
         Produto produto;
         Produto produto2;
-        Controler produtoControlle = new Controler();
-//      CADASTRA PRODUTO
-
+        ControlerProduto produtocontroler = new ControlerProduto();
         produto = new Produto(0, "Arroz", 1.45, 10, "sereal");
-        produtoControlle.inserir(produto);
+        produtocontroler.inserir(produto);
 
         produto2 = new Produto(0, "macarrão", 2.4, 20, "massa");
-        produtoControlle.inserir(produto2);
+        produtocontroler.inserir(produto2);
 //       ATUALIZA PRODUTO
         /*
         produto = new Produto(2, "Daniel", 2.00, 200);

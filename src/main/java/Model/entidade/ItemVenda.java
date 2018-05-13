@@ -21,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "itemVenda")
-public class ItensVendas implements Serializable {
+public class ItemVenda implements Serializable {
     
     @Id ()
     @GeneratedValue ()
@@ -39,20 +39,20 @@ public class ItensVendas implements Serializable {
     private Produto produto;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "codvend")
-    private Vendas venda;
+    @JoinColumn(name = "id")
+    private Venda codvend;
     
     
     
-    public ItensVendas() {
+    public ItemVenda() {
     }
 
-    public ItensVendas(int id, int quantidade, double valorTot, Produto produto, Vendas venda) {
+    public ItemVenda(int id, int quantidade, double valorTot, Produto produto, Venda codvend) {
         this.id = id;
         this.quantidade = quantidade;
         this.valorTot = valorTot;
         this.produto = produto;
-        this.venda=venda;
+        this.codvend=codvend;
     }
 
  
@@ -89,12 +89,12 @@ public class ItensVendas implements Serializable {
         this.produto = produto;
     }
 
-    public Vendas getVenda() {
-        return venda;
+    public Venda getCodvend() {
+        return codvend;
     }
 
-    public void setVenda(Vendas venda) {
-        this.venda = venda;
+    public void setCodvend(Venda codvend) {
+        this.codvend = codvend;
     }
     
 }

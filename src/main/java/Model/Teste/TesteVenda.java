@@ -6,9 +6,9 @@
 package Model.Teste;
 
 
-import Model.entidade.ItensVendas;
+import Model.entidade.ItemVenda;
 import Model.entidade.Produto;
-import Model.entidade.Vendas;
+import Model.entidade.Venda;
 
 import controller.Controler;
 import controller.ControlerItemVenda;
@@ -46,8 +46,8 @@ public class TesteVenda {
         String datVend = sdf.format(dataVenda);
         String datPagam = sdf.format(dataPagamento);
 //      --------------------cadastra venda----------------------------
-        Vendas vend = new Vendas(0, dataVenda, dataPagamento, null, c.findIDCliente(5));
-        ctrlVenda.cadastrarVenda(vend);
+//        Venda vend = new Venda(0, dataVenda, dataPagamento,"credito", null, c.findIDCliente(5));
+//        ctrlVenda.cadastrarVenda(vend);
         
         //        COMPRAS
         cadItemVend(ctrl, c);
@@ -55,8 +55,8 @@ public class TesteVenda {
     }
 
     public static void cadItemVend(ControlerItemVenda ctrl, Controler c) {
-        ItensVendas iv = new ItensVendas(0, 2, 45, c.findId(6), null);
-        ctrl.cadastrarItemVenda(iv);
+//        ItemVenda iv = new ItemVenda(0, 2, 45, c.findId(6), null);
+//        ctrl.cadastrarItemVenda(iv);
     }
 
     public static List<Produto> lstProdVend() {
@@ -73,15 +73,15 @@ public class TesteVenda {
 
     public static void atualizaQuantProduto(List<Produto> prodVends) {
         Controler c = new Controler();
-        List<Produto> prodBD = c.listarProdutos();
-        for (int i = 0; i < prodVends.size(); i++) {
-            for (int j = 0; j < prodBD.size(); j++) {
-                if (prodVends.get(i).getCodigo() == prodBD.get(j).getCodigo()) {
-                    prodBD.get(j).setQuantidade(prodBD.get(j).getQuantidade() - 1);
-                    c.alterar(prodBD.get(j));
-                }
-            }
-        }
+//        List<Produto> prodBD = c.listarProdutos();
+//        for (int i = 0; i < prodVends.size(); i++) {
+//            for (int j = 0; j < prodBD.size(); j++) {
+//                if (prodVends.get(i).getCodigo() == prodBD.get(j).getCodigo()) {
+//                    prodBD.get(j).setQuantidade(prodBD.get(j).getQuantidade() - 1);
+//                    c.alterar(prodBD.get(j));
+//                }
+//            }
+//        }
     }
 
 }

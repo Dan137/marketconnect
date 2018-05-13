@@ -5,7 +5,7 @@
  */
 package Model.DAO;
 
-import Model.entidade.Vendas;
+import Model.entidade.Venda;
 import Model.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,11 @@ import org.hibernate.Transaction;
  *
  * @author Daniel
  */
-public class VendaDao implements DaoGenerico<Vendas> {
+public class VendaDao implements DaoGenerico<Venda> {
 
     private Session session;
     private SessionFactory sessionFactory;
-    private List<Vendas> consulta = new ArrayList<Vendas>();
+    private List<Venda> consulta = new ArrayList<Venda>();
     private static DaoGenerico instance;
 
     public static DaoGenerico getInstance() {
@@ -32,7 +32,7 @@ public class VendaDao implements DaoGenerico<Vendas> {
     }
 
     @Override
-    public void inserir(Vendas v) {
+    public void inserir(Venda v) {
         sessionFactory = HibernateUtil.getSessionFactory();
         session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -46,26 +46,26 @@ public class VendaDao implements DaoGenerico<Vendas> {
         }
 
 //        vendas.add(v);
-//      Vendas.atualizaQuantidadeProdutos(vendas);
+//      Venda.atualizaQuantidadeProdutos(vendas);
     }
 
     @Override
-    public void alterar(Vendas t) {
+    public void alterar(Venda t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Vendas recuperar(int codigo) {
+    public Venda recuperar(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(Vendas t) {
+    public void deletar(Venda t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Vendas> recuperarTodos() {
+    public List<Venda> recuperarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

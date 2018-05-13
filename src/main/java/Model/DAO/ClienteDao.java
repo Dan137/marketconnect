@@ -84,6 +84,25 @@ public class ClienteDao implements DaoGenerico<Cliente> {
         return cliente;
 
     }
+    
+    public Cliente procurarByCpf(String cpf){
+       
+        Cliente cliente = new Cliente();
+        sessionFactory = HibernateUtil.getSessionFactory();
+        session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            consulta = session.createQuery("from Cliente where cpf=" + cpf).getResultList();
+            cliente = consulta.get(0);
+        } catch (Exception e) {
+            System.out.println("erro ao alterar cliente");
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return cliente;
+
+    }
 
     @Override
     public void deletar(Cliente t) {

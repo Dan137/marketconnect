@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panelGrid columns="2">
+                <h:outputLabel value="NOME: "/>
+                <p:inputText value="#{controler.cliente.nome}"/>
+
+                <h:outputLabel value="CPF: "/>
+                <p:inputText value="#{controler.cliente.cpf}"/>
+
+                <h:outputLabel value="Data ADMISSÃO"/>
+                <p:inputMask mask="99/99/9999" value="#{controler.cliente.dataAbertura}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
+                </p:inputMask>
+
+               
+                <h:outputLabel value="e-mail: "/>
+                <p:inputText value="#{controler.cliente.email}"/>
+
+                <h:outputLabel value="telefone: "/>
+                <p:inputMask value="#{controler.cliente.telefone}" mask="(99) 99999-9999"/> 
+
+                <h:outputLabel value="rua"/>
+                <h:inputText value="#{controler}"
+                <p:commandButton value="cadastrar" action="#{controler.inserirCliente(controler.cliente)}"/>
+
+            </p:panelGrid>
+        </h:form>
+
+    </h:body>
+</html>
+

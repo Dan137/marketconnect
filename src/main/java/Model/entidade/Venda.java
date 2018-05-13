@@ -16,7 +16,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,7 +27,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "venda")
-public class Vendas implements Serializable {
+public class Venda implements Serializable {
 
     @Id
     @GeneratedValue
@@ -43,22 +42,44 @@ public class Vendas implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataPagamento;
     
-    @OneToMany(mappedBy = "venda", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<ItensVendas> itensVenda;
+    @Column(name = "formpag")
+    private String formapagamento;
     
+    @OneToMany(mappedBy = "codvend", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ItemVenda> itemvenda;
+  
     @OneToOne
-    private Cliente cliente;
+    @JoinColumn(name="Id")
+    private Cliente cliente_id;
 
-    public Vendas(int codigo, Date dataVenda, Date dataPagamento, List<ItensVendas> itensVenda, Cliente cliente) {
+    public Venda(int codigo, Date dataVenda, Date dataPagamento,String formapagamento, List<ItemVenda> itemvenda, Cliente cliente_id) {
         this.dataVenda = dataVenda;
         this.codigo = codigo;
         this.dataPagamento = dataPagamento;
-        this.itensVenda=itensVenda;
-        this.cliente=cliente;
+        this.formapagamento=formapagamento;
+        this.itemvenda=itemvenda;
+        this.cliente_id=cliente_id;
+        
     }
 
-    public Vendas() {
+    public Venda() {
 
+    }
+
+    public String getFormapagamento() {
+        return formapagamento;
+    }
+
+    public void setFormapagamento(String formapagamento) {
+        this.formapagamento = formapagamento;
+    }
+
+    public List<ItemVenda> getItensVenda() {
+        return itemvenda;
+    }
+
+    public void setItensVenda(List<ItemVenda> itemvenda) {
+        this.itemvenda = itemvenda;
     }
 
     /**
@@ -96,22 +117,27 @@ public class Vendas implements Serializable {
         return dataPagamento;
     }
 
-    public List<ItensVendas> getItemVenda() {
-        return itensVenda;
+    public List<ItemVenda> getItemvenda() {
+        return itemvenda;
     }
 
-    public void setItemVenda(List<ItensVendas> itensVenda) {
-        this.itensVenda = itensVenda;
+    public void setItemvenda(List<ItemVenda> itemvenda) {
+        this.itemvenda = itemvenda;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    
+   
+
+    public Cliente getCliente_id() {
+        return cliente_id;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente_id(Cliente cliente_id) {
+        this.cliente_id = cliente_id;
     }
-    public void atualizaQuantidadeProdutos(ItensVendas lstProdutos){
+
+    
+   public void atualizaQuantidadeProdutos(ItemVenda lstProdutos){
         
     }
 //    public void atualizaQuantidadeProdutos(List<Produto> produtos) {

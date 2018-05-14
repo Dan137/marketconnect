@@ -8,6 +8,8 @@ package Model.entidade;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -45,7 +47,7 @@ public class Cliente implements Serializable{
     @Column(length = 20)
     private String telefone;
 
-    @OneToOne()
+    @OneToOne
     private Endereco endereco;
 
     @OneToOne(mappedBy = "cliente_id")

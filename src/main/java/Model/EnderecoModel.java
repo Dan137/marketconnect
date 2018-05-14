@@ -23,12 +23,13 @@ public class EnderecoModel {
     }
 
     public void cadEnderecoModel(Endereco endereco) {
-        enderecos = EnderecoDao.getInstance().recuperarTodos();
-        for(Endereco e: enderecos){
-            if(e.getNumero()==endereco.getNumero()){
-                EnderecoDao.getInstance().inserir(endereco);
-            }
-        }
+         EnderecoDao.getInstance().inserir(endereco);
+//        enderecos = EnderecoDao.getInstance().recuperarTodos();
+//        for(Endereco e: enderecos){
+//            if(e.getNumero()==endereco.getNumero()){
+//               
+//            }
+//        }
     }
     public Endereco getEnderecoId(int id){
       return (Endereco) EnderecoDao.getInstance().recuperar(id);

@@ -7,6 +7,7 @@ package Model.entidade;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,6 +19,7 @@ import javax.persistence.Table;
  */
 @Entity()
 @Table(name="endereco")
+//@Embeddable
 public class Endereco implements Serializable{
     
     @Id
@@ -34,6 +36,7 @@ public class Endereco implements Serializable{
     
     @Column(length=30)
     private String cep;
+    
 
     public Endereco(String rua, int numero, String bairro, String cidade, String cep) {
         
@@ -118,7 +121,7 @@ public class Endereco implements Serializable{
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
+   
     
     
 }

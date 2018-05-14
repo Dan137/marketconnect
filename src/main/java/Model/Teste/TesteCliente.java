@@ -26,9 +26,9 @@ public class TesteCliente {
         String dataAbertura = formataData.format(dataHoje);
 
 //        cadastra um novo endereco (passe um numero diferente no parâmetro do método
-//        TesteCliente.cadastraEndereco(5, cl);
+        TesteCliente.cadastraEndereco(5, cl);
 //        ----------------- CADASTRA CLIENTE!! ---------------------------
-        Cliente cliente1 = new Cliente(0, "Daniel ", dataHoje, "703.968.604-00", "daniel.verissimo@gmail.com", "(87) 9.8135-5794", null);
+        Cliente cliente1 = new Cliente(0, "Daniel ", dataHoje, "703.968.604-00", "daniel.verissimo@gmail.com", "(87) 9.8135-5794", cl.getEndereco(5));
         cl.inserirCliente(cliente1);
 //        Cliente cliente2 = new Cliente(0, "Maycon", dataHoje, "xxx.xxx.xxx-xx", "blkd", "dkfjkdf", "maycon@gmail.com", "(87) 9.8132-5721");       
 //        controler.inserirCliente(cliente2);
@@ -39,7 +39,7 @@ public class TesteCliente {
 //        ----------------- BUSCAR CLIENTE!! -----------------------------
 //        Cliente cliente = controler.findIDCliente(2);
 //        String str = " ";
-//        str += "nome: " + cliente.getNome() + "\n"
+//        str += "nome: " + cliente.getNo+me() + "\n"
 //                + "codigo: " + cliente.getCodigo() + "\n"
 //                + "email: " + cliente.getEmail() + "\n"
 //                + "data admissão: " + cliente.getDataAbertura() + "\n"

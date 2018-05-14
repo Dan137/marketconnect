@@ -11,11 +11,15 @@ import Model.entidade.Cliente;
 import Model.entidade.Endereco;
 
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Daniel
  */
+@ManagedBean
+@SessionScoped
 public class ControlerCliente {
 
     private ClienteModel clienteModel;
@@ -66,7 +70,7 @@ public class ControlerCliente {
 
 //    -------------------------- CONTROLER CLIENTE ---------------------------
     public void inserirCliente(Cliente cliente) {
-
+        cliente.setEndereco(this.enderecoModel.getEnderecoId(this.endereco.getNumero()));
         clienteModel.valcadCliente(cliente);
     }
 
@@ -91,6 +95,7 @@ public class ControlerCliente {
 
     public void cadEndereco(Endereco endereco) {
         enderecoModel.cadEnderecoModel(endereco);
+//        return "cadastroCliente";      
     }
 
     public void alteraEndereco(Endereco endereco) {

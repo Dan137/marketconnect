@@ -12,6 +12,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -76,7 +77,7 @@ public class ClienteDao implements DaoGenerico<Cliente> {
             consulta = session.createQuery("from Cliente where codigo=" + codigo).getResultList();
             cliente = consulta.get(0);
         } catch (Exception e) {
-            System.out.println("erro ao alterar cliente");
+            System.out.println("erro ao buscar cliente");
             e.printStackTrace();
         } finally {
             session.close();
@@ -87,20 +88,20 @@ public class ClienteDao implements DaoGenerico<Cliente> {
     
     public Cliente procurarByCpf(String cpf){
        
-        Cliente cliente = new Cliente();
+        Cliente cli = null;
         sessionFactory = HibernateUtil.getSessionFactory();
         session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            consulta = session.createQuery("from Cliente where cpf=" + cpf).getResultList();
-            cliente = consulta.get(0);
+            Query consult= session.createQuery("from Cliente where cpf like '" + cpf+ "' ");
+            cli = (Cliente) consult.list().get(0);
         } catch (Exception e) {
-            System.out.println("erro ao alterar cliente");
+            System.out.println("erro ao buscar cliente");
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return cliente;
+        return cli;
 
     }
 

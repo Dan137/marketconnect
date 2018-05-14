@@ -22,9 +22,10 @@ public class ClienteModel {
 
     public void valcadCliente(Cliente cliente) {
         ClienteDao.getInstance().inserir(cliente);
+        
 //        Cliente novo = getClienteByCPF(cliente.getCpf());
 //        if (novo == null) {
-//            
+//
 //        }
 
     }

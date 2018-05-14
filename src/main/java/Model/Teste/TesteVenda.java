@@ -61,8 +61,8 @@ public class TesteVenda {
 
     public static List<Produto> lstProdVend() {
         List<Produto> lstProdutos = new ArrayList();
-        Produto p = new Produto(10, "arroz", 2.3, 2, "serial");
-        Produto p1 = new Produto(11, "macarrão", 2.3, 2, "serial");
+        Produto p = new Produto(10, "arroz", 2.3, 2, "serial", "mariano");
+        Produto p1 = new Produto(11, "macarrão", 2.3, 2, "serial", "pila");
 
         lstProdutos.add(p);
         lstProdutos.add(p1);

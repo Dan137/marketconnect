@@ -20,22 +20,26 @@
         <div>
             <div id="left">
                 <ui:insert name="left">
-
-
-
                     <p:accordionPanel>
                         <p:tab title="Cliente">
-                            <p:menu>
-                                
-                                    <p:menuitem value="Cadastrar" url="cadastroClienteFacelets.xhtml" />
+                            <p:menu> 
+                                    <p:menuitem value="Cadastrar" url="paginasCliente/cadastroClienteFacelets.xhtml" />
                                     <p:menuitem value="Alterar" url="x" />
                                     <p:menuitem value="buscar" url="x" />
                                     <p:menuitem value="listar" url="x" />
-
-                              
                             </p:menu>
                         </p:tab>
-
+                    </p:accordionPanel>
+                    
+                    <p:accordionPanel>
+                        <p:tab title="Produto">
+                            <p:menu> 
+                                    <p:menuitem value="Cadastrar" url="paginasProduto/cadastroProdutoFacelet.xhtml" />
+                                    <p:menuitem value="Alterar" url="x" />
+                                    <p:menuitem value="buscar" url="x" />
+                                    <p:menuitem value="listar" url="paginasProduto/listarProdutosFacelet.xhtml" />
+                            </p:menu>
+                        </p:tab>
                     </p:accordionPanel>
 
                 </ui:insert>

@@ -7,6 +7,7 @@ package Model;
 
 import Model.DAO.ProdutoDAO;
 import Model.entidade.Produto;
+import java.util.List;
 
 /**
  *
@@ -21,5 +22,8 @@ public class ProdutoModel {
             System.out.println("errooo!" + e);
         }
 
+    }
+    public List<Produto> listarProdutos(){
+        return ProdutoDAO.getInstance().recuperarTodos();
     }
 }

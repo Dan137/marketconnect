@@ -9,11 +9,13 @@ import Model.DAO.ProdutoDAO;
 import Model.ProdutoModel;
 import Model.entidade.Produto;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Daniel
  */
+@ManagedBean
 public class ControlerProduto {
     private Produto produto;
     private ProdutoModel produtomodel;
@@ -51,7 +53,7 @@ public class ControlerProduto {
     }
 
     public List<Produto> listarProdutos() {
-        return null;
+        return this.produtomodel.listarProdutos();
     }
     
 }

@@ -9,6 +9,7 @@ import controller.Controler;
 
 import Model.entidade.Produto;
 import controller.ControlerProduto;
+import java.util.List;
 
 /**
  *
@@ -17,14 +18,14 @@ import controller.ControlerProduto;
 public class TesteProduto {
 
     public static void main(String[] args) {
-        Produto produto;
-        Produto produto2;
+//        Produto produto;
+//        Produto produto2;
         ControlerProduto produtocontroler = new ControlerProduto();
-        produto = new Produto(0, "Arroz", 1.45, 10, "sereal");
-        produtocontroler.inserir(produto);
-
-        produto2 = new Produto(0, "macarrão", 2.4, 20, "massa");
-        produtocontroler.inserir(produto2);
+//        produto = new Produto(0, "Arroz", 1.45, 10, "sereal", "mariano");
+//        produtocontroler.inserir(produto);
+//
+//        produto2 = new Produto(0, "macarrão", 2.4, 20, "massa", "mariano");
+//        produtocontroler.inserir(produto2);
 //       ATUALIZA PRODUTO
         /*
         produto = new Produto(2, "Daniel", 2.00, 200);
@@ -34,14 +35,14 @@ public class TesteProduto {
 //        produtoControlle.alterar(produto);
 //        Relatorios de Produtos
 //
-//        List<Produto> produtos = produtoControlle.listarProdutos();
-//        for(int i=0; i<produtos.size(); i++){
-//            System.out.println("codigo ="+produtos.get(i).getCodigo());
-//            System.out.println("nome ="+produtos.get(i).getNome());
-//            System.out.println("preco ="+produtos.get(i).getPreco());
-//            System.out.println("quantidade ="+produtos.get(i).getQuantidade());
-//            System.out.println("============================================");
-//        }
+        List<Produto> produtos = produtocontroler.listarProdutos();
+        for(int i=0; i<produtos.size(); i++){
+            System.out.println("codigo ="+produtos.get(i).getCodigo());
+            System.out.println("nome ="+produtos.get(i).getNome());
+            System.out.println("preco ="+produtos.get(i).getPreco());
+            System.out.println("quantidade ="+produtos.get(i).getQuantidade());
+            System.out.println("============================================");
+        }
 //       EXCLUI UM PRODUTO
 /*
         List<Produto> produtos = produtoControlle.listarProdutos();

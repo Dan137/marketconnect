@@ -37,13 +37,17 @@ public class Produto implements Serializable {
     @Column(length = 20)
     private String tipo;
 
-    public Produto(Integer codigo, String nome, Double preco, Integer quantidade, String tipo) {
+    @Column(length = 30)
+    private String marca;
+    
+    public Produto(Integer codigo, String nome, Double preco, Integer quantidade, String tipo, String marca) {
 
         this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
         this.tipo = tipo;
+        this.marca= marca;
 
     }
 
@@ -90,6 +94,12 @@ public class Produto implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
 
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 }

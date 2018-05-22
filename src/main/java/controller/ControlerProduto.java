@@ -19,11 +19,12 @@ import javax.faces.bean.ManagedBean;
 public class ControlerProduto {
     private Produto produto;
     private ProdutoModel produtomodel;
-    
+    private Produto selectProduto = new Produto();
 
     public ControlerProduto() {
         this.produto= new Produto();
         this.produtomodel = new ProdutoModel();
+        this.selectProduto=selectProduto;
     }
 
     public Produto getProduto() {
@@ -33,7 +34,14 @@ public class ControlerProduto {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-    
+
+    public Produto getSelectProduto() {
+        return selectProduto;
+    }
+
+    public void setSelectProduto(Produto selectProduto) {
+        this.selectProduto = selectProduto;
+    }    
     
     public void inserir(Produto produto) {
         produtomodel.cadProdModel(produto);
@@ -45,7 +53,7 @@ public class ControlerProduto {
     }
 
     public void excluir(Produto produto) {
-        
+        this.produtomodel.removerProduto(produto);
     }
 
     public Produto findId(int codigo) {
@@ -55,5 +63,5 @@ public class ControlerProduto {
     public List<Produto> listarProdutos() {
         return this.produtomodel.listarProdutos();
     }
-    
+        
 }

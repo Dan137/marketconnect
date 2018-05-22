@@ -5,11 +5,12 @@
  */
 package controller;
 
+import Model.ClienteJuridicoModel;
 import Model.ClienteModel;
 import Model.EnderecoModel;
 import Model.entidade.Cliente;
+import Model.entidade.ClienteJuridico;
 import Model.entidade.Endereco;
-
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,13 +26,17 @@ public class ControlerCliente {
     private ClienteModel clienteModel;
     private EnderecoModel enderecoModel;
     private Cliente cliente;
+    private ClienteJuridico clientejuridico;
+    private ClienteJuridicoModel cjm;
     private Endereco endereco;
 
     public ControlerCliente() {
         this.cliente = new Cliente();
+        this.clientejuridico = new ClienteJuridico();
         this.clienteModel = new ClienteModel();
         this.endereco = new Endereco();
         this.enderecoModel = new EnderecoModel();
+        this.cjm = new ClienteJuridicoModel();
     }
 //    GETTERs AND SETTERs
 
@@ -58,7 +63,6 @@ public class ControlerCliente {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
 
     public Cliente getCliente() {
         return cliente;
@@ -68,10 +72,22 @@ public class ControlerCliente {
         this.cliente = cliente;
     }
 
+    public ClienteJuridico getClientejuridico() {
+        return clientejuridico;
+    }
+
+    public void setClientejuridico(ClienteJuridico clientejuridico) {
+        this.clientejuridico = clientejuridico;
+    }
+
 //    -------------------------- CONTROLER CLIENTE ---------------------------
     public void inserirCliente(Cliente cliente) {
-        cliente.setEndereco(this.enderecoModel.getEnderecoId(this.endereco.getNumero()));
-        clienteModel.valcadCliente(cliente);
+        if (!(cliente.getTipoCliente().equals("pessoaJuridica"))) {
+            clienteModel.valcadCliente(cliente);
+        } else {
+            clientejuridico = (ClienteJuridico) cliente;
+            cjm.cadClienteJuridicoModel(clientejuridico);
+        }
     }
 
     public void updateCliente(Cliente cliente) {
@@ -79,7 +95,7 @@ public class ControlerCliente {
     }
 
     public Cliente findIDCliente(int codigo) {
-       return null;
+        return null;
 
     }
 
@@ -90,6 +106,11 @@ public class ControlerCliente {
     public List<Cliente> findAllClientes() {
         return null;
 
+    }
+//    ------------------- CONTROLER CLIENTE JURIDICO---------------------------
+
+    public void cadClienteJuridico(ClienteJuridico cj) {
+        this.cjm.cadClienteJuridicoModel(cj);
     }
 //    -------------------------- CONTROLER ENDERECO ---------------------------
 

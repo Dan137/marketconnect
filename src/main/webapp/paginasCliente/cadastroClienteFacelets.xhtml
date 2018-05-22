@@ -24,14 +24,23 @@
                                 <f:validateRegex pattern="^[a-zA-ZáàâãéèêíïóòôõöúçñÁÀÂÃÉÈÊÍÏÓÒÔÕÖÚÇÑ ]+$"/>
                             </p:inputText>
 
+                            <h:outputLabel for="idTipoCliente" value="PESSOA"/>
+                            <p:selectOneMenu id="idTipoCliente" value="#{controlerCliente.cliente.tipoCliente}">
+                                <f:selectItem itemLabel="Pessoa Física" itemValue="Pessoa Física" />
+                                <f:selectItem itemLabel="pessoaJuridica" itemValue="pessoaJuridica" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel for="idcnpj" value="CNPJ"/>
+                            <p:inputText id="idcnpj" value="#{controlerCliente.clientejuridico.cnpj}"/>
+
                             <h:outputLabel for="idCPF" value="CPF: "/>
                             <p:inputText id= "idCPF" value="#{controlerCliente.cliente.cpf}"/>
 
+                            
                             <h:outputLabel for="idDataAbertura" value="DATA ABERTURA"/>
                             <p:inputMask  id="idDataAbertura" mask="99/99/9999" value="#{controlerCliente.cliente.dataAbertura}">
                                 <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-3"/>
                             </p:inputMask>
-
 
                             <h:outputLabel for="idEmail" value="E-MAIL: "/>
                             <p:inputText id="idEmail" value="#{controlerCliente.cliente.email}"/>
@@ -40,14 +49,9 @@
                             <p:inputMask id="idTelefone" value="#{controlerCliente.cliente.telefone}" mask="(99) 99999-9999"/> 
 
                         </p:panelGrid>
-                        <p:commandButton value="cadastrar" action="#{controlerCliente.inserirCliente(controlerCliente.cliente)}"/><br/><br/>
+                        <p:fieldset legend="endereco"/>
 
-                    </h:form>
-                </p:fieldset>
-
-                <p:fieldset legend="endereco">
-                    <h:form>
-                        <p:panelGrid columns="2">
+                        <p:panelGrid columns="2" >
                             <h:outputLabel for="idRua" value="RUA"/>
                             <p:inputText id="idRua" value="#{controlerCliente.endereco.rua}"/>
 
@@ -64,12 +68,19 @@
                             <p:inputText id="idCEP" value="#{controlerCliente.endereco.cep}"/>
 
                         </p:panelGrid>
-                        <p:commandButton value="cadastrar" action="#{controlerCliente.cadEndereco(controlerCliente.endereco)}"/><br/>
-                        
-                        <!--<h:link outcome="./../index.xhtml" value="home"/>-->
-                        
+
+
                     </h:form>
                 </p:fieldset>
+
+                <p:commandButton value="cadastrar" action="#{controlerCliente.inserirCliente(controlerCliente.cliente)}"/><br/>
+
+
+
+
+                <!--<h:link outcome="./../index.xhtml" value="home"/>-->
+
+
             </ui:define>
 
         </ui:composition>

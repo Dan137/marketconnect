@@ -77,7 +77,7 @@ public class EnderecoDao implements DaoGenerico<Endereco> {
             consulta = session.createQuery("from Endereco where numero=" + numero).getResultList();
             endereco = consulta.get(0);
         } catch (Exception e) {
-            System.out.println("erro ao obter o funcionario");
+            System.out.println("erro ao obter o endereco");
             e.printStackTrace();
         } finally {
             session.close();

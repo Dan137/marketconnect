@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -14,26 +15,53 @@
             </ui:define>
             <ui:define name="content">
                 <h:form>
-                    <p:dataTable var="produtos" value="#{controlerProduto.listarProdutos()}" rows="10" rowKey="#{produtos.codigo}" paginator="true">
+
+                    <p:dataTable id="idTabela" var="produto" value="#{controlerProduto.listarProdutos()}" rows="10" rowKey="#{produto.codigo}"
+                                 selection="#{controlerProduto.selectProduto}" selectionMode="single" paginator="true">
+
                         <p:column headerText="Nome">
-                            <h:outputText value="#{produtos.nome}"/>
+                            <h:outputText value="#{produto.nome}"/>
                         </p:column>
-                        
+
                         <p:column headerText="Tipo">
-                            <h:outputText value="#{produtos.tipo}"/>
+                            <h:outputText value="#{produto.tipo}"/>
                         </p:column>
-                        
+
                         <p:column headerText="Marca">
-                            <h:outputText value="#{produtos.marca}"/>
+                            <h:outputText value="#{produto.marca}"/>
                         </p:column>
-                        
+
                         <p:column headerText="Quantidade">
-                            <h:outputText value="#{produtos.quantidade}"/>
+                            <h:outputText value="#{produto.quantidade}"/>
                         </p:column>
-                        
+
                         <p:column headerText="codigo">
-                            <h:outputText value="#{produtos.codigo}"/>
+                            <h:outputText value="#{produto.codigo}"/>
                         </p:column>
+
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="Excluir"/>
+                            </f:facet>
+                            <p:commandButton value="excluir" action="#{controlerProduto.excluir(controlerProduto.selectProduto)}">
+                                <f:setPropertyActionListener value="#{produto}" target="#{controlerProduto.selectProduto}"/>
+                            </p:commandButton>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="alterar"/>
+                            </f:facet>
+                            <p:commandButton value="alterar" action="alterarProdutoServlet.xhtml"/>
+                        </p:column>
+<!--                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="Alterar"/>
+                            </f:facet>
+                            <p:commandButton value="alterar" action="#{controlerProduto.alterar(controlerProduto.selectProduto)}">
+                                <f:setPropertyActionListener value="#{produto}" target="#{controlerProduto.selectProduto}"/>
+                            </p:commandButton>
+                        </p:column>-->
                     </p:dataTable>
                 </h:form>
             </ui:define>

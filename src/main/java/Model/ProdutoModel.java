@@ -26,4 +26,8 @@ public class ProdutoModel {
     public List<Produto> listarProdutos(){
         return ProdutoDAO.getInstance().recuperarTodos();
     }
+    
+    public void removerProduto(Produto produto){
+        ProdutoDAO.getInstance().deletar(produto);
+    }
 }

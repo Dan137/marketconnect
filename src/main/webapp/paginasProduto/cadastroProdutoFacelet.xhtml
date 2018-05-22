@@ -9,33 +9,36 @@
     <body>
 
         <ui:composition template="./../Template.xhtml">
-           
+
             <ui:define name="SYS_MARKET CONNECT">
-                <H2>FORMULÁRIO PRODUTO</H2>
+                <!--<H2>FORMULÁRIO PRODUTO</H2>-->
             </ui:define>         
 
             <ui:define name="content">
-                <h:form>
-                    <p:panelGrid columns="2">
-                        <h:outputLabel for = "idNome" value="NOME"/>
-                        <p:inputText id="idNome" value="#{controlerProduto.produto.nome}"/>
-                        
-                        <h:outputLabel for= "idPreco" value="PREÇO"/>
-                        <p:inputText id="idPreco" value="#{controlerProduto.produto.preco}"/>
-                        
-                        <h:outputLabel for ="idQuantidade" value="QUANTIDADE"/>
-                        <p:inputText id="idQuantidade" value="#{controlerProduto.produto.quantidade}"/>
-                        
-                        <h:outputLabel for="idTipo" value="TIPO"/>
-                        <p:inputText id="idTipo" value="#{controlerProduto.produto.tipo}"/>
-                        
-                        <h:outputLabel for="idMarca" value="MARCA"/>
-                        <p:inputText id="idMarca" value="#{controlerProduto.produto.marca}"/>
-                    </p:panelGrid>
-                    <p:commandButton value="cadastrar" action="#{controlerProduto.inserir(controlerProduto.produto)}"/>
-                    
-                    <h:link outcome="index.xhtml" value="home"/>
-                </h:form>
+                <p:growl id="messages" autoUpdate="true"/>
+                <p:fieldset legend="formulário cadastro de produto">
+                    <h:form>
+                        <p:panelGrid columns="2">
+                            <h:outputLabel for = "idNome" value="NOME"/>
+                            <p:inputText id="idNome" value="#{controlerProduto.produto.nome}"/>
+
+                            <h:outputLabel for= "idPreco" value="PREÇO"/>
+                            <p:inputText id="idPreco" value="#{controlerProduto.produto.preco}"/>
+
+                            <h:outputLabel for ="idQuantidade" value="QUANTIDADE"/>
+                            <p:inputText id="idQuantidade" value="#{controlerProduto.produto.quantidade}"/>
+
+                            <h:outputLabel for="idTipo" value="TIPO"/>
+                            <p:inputText id="idTipo" value="#{controlerProduto.produto.tipo}"/>
+
+                            <h:outputLabel for="idMarca" value="MARCA"/>
+                            <p:inputText id="idMarca" value="#{controlerProduto.produto.marca}"/>
+                        </p:panelGrid>
+                        <p:commandButton value="cadastrar" action="#{controlerProduto.inserir(controlerProduto.produto)}"/>
+
+                        <h:link outcome="index.xhtml" value="home"/>
+                    </h:form>
+                </p:fieldset>
             </ui:define>
 
         </ui:composition>

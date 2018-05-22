@@ -17,12 +17,12 @@ import javax.persistence.Table;
  *
  * @author Daniel
  */
-@Entity()
-@Table(name="endereco")
-//@Embeddable
+//@Entity()
+//@Table(name="endereco")
+@Embeddable
 public class Endereco implements Serializable{
     
-    @Id
+    @Column (name="numero")
     private int numero;
     
     @Column(length=50)

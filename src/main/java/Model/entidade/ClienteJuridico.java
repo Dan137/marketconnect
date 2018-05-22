@@ -6,6 +6,7 @@
 package Model.entidade;
 
 import java.util.Date;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -14,17 +15,17 @@ import javax.persistence.Table;
  * @author Daniel
  */
 @Entity
-@Table(name="clienteJuridico")
+@DiscriminatorValue(value = "pessoaJuridica")
 public class ClienteJuridico extends Cliente{
 //    duvida
    
-    private String cnpj;
+    private String cnpj=" ";
 
     public ClienteJuridico() {
     }
 
-    public ClienteJuridico(String cnpj, Integer codigo, String nome, Date dataAbertura, String cpf,  String email, String telefone, Endereco endereco) {
-        super(codigo, nome, dataAbertura, cpf, email, telefone, endereco);
+    public ClienteJuridico(String cnpj, Integer codigo, String tipoCliente, String nome, Date dataAbertura, String cpf,  String email, String telefone, Endereco endereco) {
+        super(codigo, tipoCliente, nome, dataAbertura, cpf, email, telefone, endereco);
         this.cnpj = cnpj;
     }
 

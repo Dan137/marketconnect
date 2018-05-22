@@ -6,6 +6,7 @@
 package Model.Teste;
 
 import Model.entidade.Cliente;
+import Model.entidade.ClienteJuridico;
 import Model.entidade.Endereco;
 import controller.Controler;
 import controller.ControlerCliente;
@@ -17,22 +18,23 @@ import java.util.Date;
  * @author Daniel
  */
 public class TesteCliente {
-    
+
     public static void main(String[] args) {
-        
+
         Date dataHoje = new Date();
         ControlerCliente cl = new ControlerCliente();
         SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
         String dataAbertura = formataData.format(dataHoje);
 
-//        cadastra um novo endereco (passe um numero diferente no parâmetro do método
-        TesteCliente.cadastraEndereco(5, cl);
 //        ----------------- CADASTRA CLIENTE!! ---------------------------
-        Cliente cliente1 = new Cliente(0, "Daniel ", dataHoje, "703.968.604-00", "daniel.verissimo@gmail.com", "(87) 9.8135-5794", cl.getEndereco(5));
-        cl.inserirCliente(cliente1);
-//        Cliente cliente2 = new Cliente(0, "Maycon", dataHoje, "xxx.xxx.xxx-xx", "blkd", "dkfjkdf", "maycon@gmail.com", "(87) 9.8132-5721");       
-//        controler.inserirCliente(cliente2);
-
+//        Cliente cliente1 = new Cliente(0, "pessoaJuridica", "Daniel ", dataHoje, "703.968.604-00", "daniel.verissimo@gmail.com", "(87) 9.8135-5794", cl.getEndereco(5));
+//         Endereco enderecoCliente = new Endereco("Rua C", 5, "centro", "Paranatama-PE", "55-355-00");
+//        Cliente cliente2 = new Cliente(0, "pessoa fisica", "Daniel ", dataHoje, "703.968.604-00", "daniel.verissimo@gmail.com", "(87) 9.8135-5794", enderecoCliente);       
+//        cl.inserirCliente(cliente2);
+//        ----------------- CADASTRA CLIENTEJURIDICO!! ---------------------------
+//         Endereco enderecoCliente = new Endereco("Rua C", 5, "centro", "Paranatama-PE", "55-355-00");
+//        ClienteJuridico cj = new ClienteJuridico("123345454", 0, "pessoaJuridica", "Daniel ", dataHoje, "703.968.604-00", "daniel.verissimo@gmail.com", "(87) 9.8135-5794", enderecoCliente);
+//        cl.cadClienteJuridico(cj);
 //        ----------------- ATUALIZA CLIENTE!! ---------------------------
 //    Cliente upCliente = new Cliente (2, "Maycon Abilio Rego", dataHoje, "father", "mother", "maycon.abilioreg@gmail.com", "(87) xxxx-xxxx");
 //    controler.updateCliente(upCliente);
@@ -59,10 +61,5 @@ public class TesteCliente {
 //        Cliente cliente = controler.findIDCliente(4);
 //        controler.deleteCliente(cliente);
     }
-    
-    public static void cadastraEndereco(int numero, ControlerCliente cl) {
-        Endereco enderecoCliente = new Endereco("Rua C", numero, "centro", "Paranatama-PE", "55-355-00");
-       
-        cl.cadEndereco(enderecoCliente);
-    }
+
 }

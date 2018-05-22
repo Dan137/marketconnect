@@ -8,6 +8,7 @@ package Model.entidade;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -24,15 +25,18 @@ import javax.persistence.Table;
  * @author Daniel
  */
 @Entity
-@Table(name = "cliente")
-@Inheritance( strategy = InheritanceType.JOINED )
-public class Cliente implements Serializable{
+@Inheritance( strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipoCliente")
+public  class Cliente implements Serializable{
 
     @GeneratedValue()
     @Id
     @Column(name = "Id")
     private Integer codigo;
 
+    @Column(name = "tipoCliente", insertable=false, updatable=false)
+    private String tipoCliente;
+    
     @Column(length = 45)
     private String nome;
 
@@ -47,15 +51,16 @@ public class Cliente implements Serializable{
     @Column(length = 20)
     private String telefone;
 
-    @OneToOne
+    @Embedded
     private Endereco endereco;
 
     @OneToOne(mappedBy = "cliente_id")
     private Venda venda;
     
-    public Cliente(Integer codigo, String nome, Date dataAbertura, String cpf, String email, String telefone, Endereco endereco) {
+    public Cliente(Integer codigo, String tipoCliente, String nome, Date dataAbertura, String cpf, String email, String telefone, Endereco endereco) {
 
         this.codigo = codigo;
+        this.tipoCliente=tipoCliente;
         this.nome = nome;
         this.dataAbertura = dataAbertura;
         this.email = email;
@@ -74,6 +79,14 @@ public class Cliente implements Serializable{
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
+    }
+
+    public String getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(String tipoCliente) {
+        this.tipoCliente = tipoCliente;
     }
 
     /**
